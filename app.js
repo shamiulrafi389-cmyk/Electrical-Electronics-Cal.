@@ -149,3 +149,6 @@ function show(section) {
 
     document.getElementById(section).classList.remove("hidden");
 }
+window.onload = function () {
+    show('ohm');
+};
