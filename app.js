@@ -60,7 +60,8 @@ function calcReactance() {
     let XC = 1 / (2 * Math.PI * f * C);
 
     reactOut.innerText =
-        `XL = ${XL.toFixed(2)} Ω | XC = ${XC.toFixed(2)} Ω`;
+`XL = ${XL.toFixed(2)} Ω | XC = ${XC.toExponential(2)} Ω`;
+    
 }
 
 /* IMPEDANCE */
