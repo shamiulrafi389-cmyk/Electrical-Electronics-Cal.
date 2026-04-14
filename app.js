@@ -142,3 +142,10 @@ function calcRes() {
     resOut.innerText = output;
 }
 window.onload = updateBands;
+function show(section) {
+    document.querySelectorAll("section").forEach(sec => {
+        sec.classList.add("hidden");
+    });
+
+    document.getElementById(section).classList.remove("hidden");
+}
