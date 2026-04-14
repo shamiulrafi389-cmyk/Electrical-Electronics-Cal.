@@ -67,3 +67,48 @@ button {
     border: none;
     border-radius: 6px;
 }
+.footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 40px;
+    background: #020617;
+    border-top: 1px solid #1e293b;
+}
+
+.profile img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #2563eb;
+    box-shadow: 0 0 15px #2563eb;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 10px #2563eb; }
+    to { box-shadow: 0 0 25px #3b82f6; }
+}
+
+.profile h3 {
+    margin: 10px 0 5px;
+}
+
+.links a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.links a:hover {
+    color: #2563eb;
+    transform: scale(1.1);
+}
+
+.copyright {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #94a3b8;
+}
