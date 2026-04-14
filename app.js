@@ -90,3 +90,13 @@ function calcRes() {
     let value = ((+b1.value * 10) + (+b2.value)) * (+mult.value);
     resOut.innerText = `Resistance = ${value} Ω`;
 }
+function updateBands() {
+    let type = document.getElementById("bandType").value;
+
+    // basic control (later upgrade possible)
+    if (type == 3) {
+        mult.style.display = "block";
+    } else {
+        mult.style.display = "block";
+    }
+}
