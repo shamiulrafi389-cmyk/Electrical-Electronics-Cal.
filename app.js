@@ -121,7 +121,7 @@ function formatRes(value) {
 }
 
 function calcRes() {
-    let type = bandType.value;
+    let type = parseInt(bandType.value);
 
     let value;
 
