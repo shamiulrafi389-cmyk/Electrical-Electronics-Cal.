@@ -3,33 +3,78 @@ function show(id) {
     document.getElementById(id).classList.remove("hidden");
 }
 
+/* UNIT CONVERTER */
+function parseValue(val) {
+    if (!val) return 0;
+    val = val.toLowerCase();
+
+    if (val.includes("k")) return parseFloat(val) * 1e3;
+    if (val.includes("m")) return parseFloat(val) * 1e-3;
+    if (val.includes("u")) return parseFloat(val) * 1e-6;
+
+    return parseFloat(val);
+}
+
+/* OHM */
 function calcOhm() {
-    let v = parseFloat(V.value);
-    let i = parseFloat(I.value);
-    let r = parseFloat(R.value);
+    let v = parseValue(V.value);
+    let i = parseValue(I.value);
+    let r = parseValue(R.value);
 
-    if (v && i) ohmOut.innerText = "R = " + (v/i).toFixed(2) + " Ω";
-    else if (v && r) ohmOut.innerText = "I = " + (v/r).toFixed(2) + " A";
-    else if (i && r) ohmOut.innerText = "V = " + (i*r).toFixed(2) + " V";
+    if (v && i) ohmOut.innerText = `Resistance = ${(v/i).toFixed(2)} Ω`;
+    else if (v && r) ohmOut.innerText = `Current = ${(v/r).toFixed(2)} A`;
+    else if (i && r) ohmOut.innerText = `Voltage = ${(i*r).toFixed(2)} V`;
 }
 
+/* POWER */
 function calcPower() {
-    powerOut.innerText = "P = " + (Vp.value * Ip.value).toFixed(2) + " W";
+    let v = parseValue(Vp.value);
+    let i = parseValue(Ip.value);
+    powerOut.innerText = `Power = ${(v*i).toFixed(2)} W`;
 }
 
+/* ENERGY */
 function calcEnergy() {
-    energyOut.innerText = "E = " + (Pe.value * t.value).toFixed(2) + " J";
+    let p = parseValue(Pe.value);
+    let time = parseValue(t.value);
+    energyOut.innerText = `Energy = ${(p*time).toFixed(2)} J`;
 }
 
+/* AC POWER */
 function calcAC() {
-    let V = parseFloat(Vrms.value);
-    let I = parseFloat(Irms.value);
+    let V = parseValue(Vrms.value);
+    let I = parseValue(Irms.value);
     let pf = parseFloat(document.getElementById("pf").value);
 
     let P = V * I * pf;
-    acOut.innerText = "Real Power = " + P.toFixed(2) + " W";
+    acOut.innerText = `Real Power = ${P.toFixed(2)} W`;
 }
 
+/* REACTANCE */
+function calcReactance() {
+    let f = parseValue(freq.value);
+    let L = parseValue(induct.value);
+    let C = parseValue(cap.value);
+
+    let XL = 2 * Math.PI * f * L;
+    let XC = 1 / (2 * Math.PI * f * C);
+
+    reactOut.innerText =
+        `XL = ${XL.toFixed(2)} Ω | XC = ${XC.toFixed(2)} Ω`;
+}
+
+/* IMPEDANCE */
+function calcImpedance() {
+    let R = parseValue(Rz.value);
+    let XL = parseValue(Xl.value);
+    let XC = parseValue(Xc.value);
+
+    let Z = Math.sqrt(R*R + Math.pow((XL-XC),2));
+
+    impOut.innerText = `Impedance Z = ${Z.toFixed(2)} Ω`;
+}
+
+/* RESISTOR */
 const colors = ["Black","Brown","Red","Orange","Yellow","Green","Blue","Violet","Gray","White"];
 
 colors.forEach((c,i)=>{
@@ -40,5 +85,5 @@ colors.forEach((c,i)=>{
 
 function calcRes() {
     let value = ((+b1.value * 10) + (+b2.value)) * (+mult.value);
-    resOut.innerText = "Resistance = " + value + " Ω";
+    resOut.innerText = `Resistance = ${value} Ω`;
 }
