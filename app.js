@@ -1,3 +1,10 @@
+function calcEnergy(){
+    let p = parseFloat(document.getElementById("pe").value);
+    let time = parseFloat(document.getElementById("t").value);
+
+    document.getElementById("energyOut").innerText =
+    "E = "+(p*time).toFixed(2);
+}
 function show(id){
 document.querySelectorAll("section").forEach(s=>s.classList.add("hidden"));
 document.getElementById(id).classList.remove("hidden");
