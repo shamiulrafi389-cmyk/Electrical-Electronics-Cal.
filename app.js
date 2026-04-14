@@ -54,7 +54,9 @@ function calcAC() {
 function calcReactance() {
     let f = parseValue(freq.value);
     let L = parseValue(induct.value);
-    let C = parseValue(cap.value);
+    let cVal = parseFloat(cap.value);
+let cUnit = parseFloat(document.getElementById("capUnit").value);
+let C = cVal * cUnit;
 
     let XL = 2 * Math.PI * f * L;
     let XC = 1 / (2 * Math.PI * f * C);
