@@ -54,17 +54,25 @@
 
 <section id="resistor" class="card hidden">
     <h2>Resistor Calculator</h2>
-    <select id="bandType" onchange="updateBands()">
+
+<select id="bandType" onchange="updateBands()">
     <option value="3">3 Band</option>
     <option value="4">4 Band</option>
     <option value="5">5 Band</option>
+    <option value="6">6 Band</option>
 </select>
-    <select id="b1"></select>
-    <select id="b2"></select>
-    <select id="mult"></select>
-    <button onclick="calcRes()">Calculate</button>
-    <p id="resOut"></p>
-</section>
+
+<select id="b1"></select>
+<select id="b2"></select>
+<select id="b3"></select>
+
+<select id="mult"></select>
+
+<select id="tol"></select>
+
+<button onclick="calcRes()">Calculate</button>
+
+<p id="resOut"></p>
 
 <section id="ac" class="card hidden">
     <h2>AC Calculator</h2>
