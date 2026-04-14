@@ -1,35 +1,38 @@
 body {
     margin: 0;
-    font-family: "Segoe UI", sans-serif;
-    background: #0b1220;
-    color: #e2e8f0;
+    font-family: Arial;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
 }
 
 header {
-    background: #020617;
-    padding: 16px;
     text-align: center;
+    padding: 20px;
+    background: #020617;
 }
 
 .container {
     display: flex;
-    height: 100vh;
 }
 
 nav {
-    width: 240px;
+    width: 220px;
     background: #020617;
-    padding: 15px;
+    padding: 10px;
 }
 
 nav button {
     width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    background: #111827;
-    border: none;
+    padding: 12px;
+    margin: 6px 0;
+    background: #1e293b;
     color: white;
-    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+}
+
+nav button:hover {
+    background: #2563eb;
 }
 
 main {
@@ -40,7 +43,8 @@ main {
 .card {
     background: #111827;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
+    max-width: 400px;
 }
 
 .hidden {
@@ -48,10 +52,12 @@ main {
 }
 
 input, select {
-    display: block;
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     margin: 10px 0;
+    background: #020617;
+    border: 1px solid #334155;
+    color: white;
 }
 
 button {
@@ -59,5 +65,5 @@ button {
     background: #2563eb;
     color: white;
     border: none;
-    cursor: pointer;
+    border-radius: 6px;
 }
