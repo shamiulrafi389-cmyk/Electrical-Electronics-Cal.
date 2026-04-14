@@ -73,7 +73,13 @@
 <h2>Reactance</h2>
 <input id="freq" placeholder="Frequency (Hz)">
 <input id="induct" placeholder="Inductance (H)">
-<input id="cap" placeholder="Capacitance (F)">
+<input id="cap" placeholder="Value">
+<select id="capUnit">
+    <option value="1">F</option>
+    <option value="1e-3">mF</option>
+    <option value="1e-6">µF</option>
+    <option value="1e-9">nF</option>
+</select>
 <button onclick="calcReactance()">Calculate</button>
 <p id="reactOut"></p>
 </section>
