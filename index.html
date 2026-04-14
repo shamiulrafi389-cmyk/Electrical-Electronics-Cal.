@@ -2,131 +2,123 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Electrical Pro Calculator</title>
+<title>Electrical Toolkit</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-    <h1>⚡ Electrical Engineering Toolkit</h1>
-</header>
-
-<div class="container">
+<h1>⚡ Electrical Engineering Toolkit</h1>
 
 <nav>
-    <button onclick="show('ohm')">Ohm's Law</button>
-    <button onclick="show('power')">Power</button>
-    <button onclick="show('energy')">Energy</button>
-    <button onclick="show('resistor')">Resistor</button>
-    <button onclick="show('ac')">AC Calculator</button>
-    <button onclick="show('react')">Reactance</button>
-    <button onclick="show('impedance')">Impedance</button>
+<button onclick="show('ohm')">Ohm's Law</button>
+<button onclick="show('power')">Power</button>
+<button onclick="show('energy')">Energy</button>
+<button onclick="show('resistor')">Resistor</button>
+<button onclick="show('ac')">AC Calculator</button>
+<button onclick="show('reactance')">Reactance</button>
+<button onclick="show('impedance')">Impedance</button>
 </nav>
 
-<main>
-
+<!-- OHM -->
 <section id="ohm" class="card">
-    <h2>Ohm's Law</h2>
-    <input id="V" placeholder="Voltage (V)">
-    <input id="I" placeholder="Current (A)">
-    <input id="R" placeholder="Resistance (Ω)">
-    <button onclick="calcOhm()">Calculate</button>
-    <p id="ohmOut"></p>
+<h2>Ohm's Law</h2>
+<input id="v" placeholder="Voltage">
+<input id="i" placeholder="Current">
+<button onclick="calcOhm()">Calculate</button>
+<p id="ohmOut"></p>
 </section>
 
+<!-- POWER -->
 <section id="power" class="card hidden">
-    <h2>Power</h2>
-    <input id="Vp" placeholder="Voltage (V)">
-    <input id="Ip" placeholder="Current (A)">
-    <button onclick="calcPower()">Calculate</button>
-    <p id="powerOut"></p>
+<h2>Power</h2>
+<input id="vp" placeholder="Voltage">
+<input id="ip" placeholder="Current">
+<button onclick="calcPower()">Calculate</button>
+<p id="powerOut"></p>
 </section>
 
+<!-- ENERGY -->
 <section id="energy" class="card hidden">
-    <h2>Energy</h2>
-    <input id="Pe" placeholder="Power (W)">
-    <input id="t" placeholder="Time (s)">
-    <button onclick="calcEnergy()">Calculate</button>
-    <p id="energyOut"></p>
+<h2>Energy</h2>
+<input id="pe" placeholder="Power">
+<input id="t" placeholder="Time">
+<button onclick="calcEnergy()">Calculate</button>
+<p id="energyOut"></p>
 </section>
 
+<!-- RESISTOR -->
 <section id="resistor" class="card hidden">
-    <h2>Resistor Calculator</h2>
+<h2>Resistor Calculator</h2>
 
 <select id="bandType" onchange="updateBands()">
-    <option value="3">3 Band</option>
-    <option value="4">4 Band</option>
-    <option value="5">5 Band</option>
-    <option value="6">6 Band</option>
+<option value="3">3 Band</option>
+<option value="4">4 Band</option>
+<option value="5">5 Band</option>
+<option value="6">6 Band</option>
 </select>
 
 <select id="b1"></select>
 <select id="b2"></select>
 <select id="b3"></select>
-
 <select id="mult"></select>
-
 <select id="tol"></select>
 
 <button onclick="calcRes()">Calculate</button>
-
 <p id="resOut"></p>
-
-<section id="ac" class="card hidden">
-    <h2>AC Calculator</h2>
-    <input id="Vrms" placeholder="Voltage (V)">
-    <input id="Irms" placeholder="Current (A)">
-    <input id="pf" placeholder="Power Factor (cosφ)">
-    <button onclick="calcAC()">Calculate</button>
-    <p id="acOut"></p>
 </section>
-<section id="react" class="card hidden">
+
+<!-- AC -->
+<section id="ac" class="card hidden">
+<h2>AC Calculator</h2>
+<input id="Vrms" placeholder="Voltage">
+<input id="Irms" placeholder="Current">
+<input id="pf" placeholder="Power Factor">
+<button onclick="calcAC()">Calculate</button>
+<p id="acOut"></p>
+</section>
+
+<!-- REACTANCE -->
+<section id="reactance" class="card hidden">
 <h2>Reactance</h2>
-<input id="freq" placeholder="Frequency (Hz)">
+<input id="freq" placeholder="Frequency">
 <input id="induct" placeholder="Inductance (H)">
-<input id="cap" placeholder="Value">
-<select id="capUnit">
-    <option value="1">F</option>
-    <option value="1e-3">mF</option>
-    <option value="1e-6">µF</option>
-    <option value="1e-9">nF</option>
-</select>
+<input id="cap" placeholder="Capacitance (F)">
 <button onclick="calcReactance()">Calculate</button>
 <p id="reactOut"></p>
 </section>
 
+<!-- IMPEDANCE -->
 <section id="impedance" class="card hidden">
 <h2>Impedance</h2>
-<input id="Rz" placeholder="Resistance (Ω)">
+<input id="Rz" placeholder="Resistance">
 <input id="Xl" placeholder="XL">
 <input id="Xc" placeholder="XC">
 <button onclick="calcImpedance()">Calculate</button>
 <p id="impOut"></p>
 </section>
-</main>
-</div>
+
+<!-- FOOTER -->
 <footer class="footer">
 
-    <div class="profile">
-        <img src="https://i.ibb.co/4pDNDk1/avatar.png" alt="profile">
-        <h3>SHAMIUL HASAN RAFI</h3>
-        <p>Institute of Computer Science and Technology</p>
-    </div>
+<div class="profile">
+<img src="https://i.ibb.co/4pDNDk1/profile.png">
+<h3>SHAMIUL HASAN RAFI</h3>
+<p>Institute of Computer Science and Technology</p>
+</div>
 
-    <div class="links">
-        <a href="https://www.linkedin.com/in/shamiul-hasan-86a4623a8" target="_blank">
-            🔗 Connect on LinkedIn
-        </a>
-    </div>
+<div class="links">
+<a href="https://www.linkedin.com/in/shamiul-hasan-86a4623a8" target="_blank">
+🔗 Connect on LinkedIn
+</a>
+</div>
 
-    <p class="copyright">
-        © 2026 Electrical Engineering Toolkit
-    </p>
+<p class="copyright">
+© 2026 Electrical Engineering Toolkit
+</p>
 
 </footer>
-<script src="app.js"></script>
 
+<script src="app.js"></script>
 </body>
 </html>
