@@ -96,12 +96,23 @@ tol.innerHTML = `
 `;
 
 function updateBands() {
-    let type = bandType.value;
+    let type = parseInt(document.getElementById("bandType").value);
 
-    b3.style.display = (type >= 5) ? "block" : "none";
-    tol.style.display = (type >= 4) ? "block" : "none";
+    b3.style.display = "none";
+    tol.style.display = "none";
+
+    if (type == 4) {
+        tol.style.display = "block";
+    }
+    else if (type == 5) {
+        b3.style.display = "block";
+        tol.style.display = "block";
+    }
+    else if (type == 6) {
+        b3.style.display = "block";
+        tol.style.display = "block";
+    }
 }
-
 function formatRes(value) {
     if (value >= 1e9) return (value/1e9).toFixed(2) + " GΩ";
     if (value >= 1e6) return (value/1e6).toFixed(2) + " MΩ";
@@ -130,3 +141,4 @@ function calcRes() {
 
     resOut.innerText = output;
 }
+window.onload = updateBands;
