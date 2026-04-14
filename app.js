@@ -4,45 +4,30 @@ function show(id) {
 }
 
 function calcOhm() {
-    let v = parseFloat(document.getElementById("V").value);
-    let i = parseFloat(document.getElementById("I").value);
-    let r = parseFloat(document.getElementById("R").value);
+    let v = parseFloat(V.value);
+    let i = parseFloat(I.value);
+    let r = parseFloat(R.value);
 
-    if (v && i)
-        ohmOut.innerText = "R = " + (v / i).toFixed(2) + " Ω";
-    else if (v && r)
-        ohmOut.innerText = "I = " + (v / r).toFixed(2) + " A";
-    else if (i && r)
-        ohmOut.innerText = "V = " + (i * r).toFixed(2) + " V";
+    if (v && i) ohmOut.innerText = "R = " + (v/i).toFixed(2) + " Ω";
+    else if (v && r) ohmOut.innerText = "I = " + (v/r).toFixed(2) + " A";
+    else if (i && r) ohmOut.innerText = "V = " + (i*r).toFixed(2) + " V";
 }
 
 function calcPower() {
-    let v = parseFloat(Vp.value);
-    let i = parseFloat(Ip.value);
-    powerOut.innerText = "P = " + (v * i).toFixed(2) + " W";
+    powerOut.innerText = "P = " + (Vp.value * Ip.value).toFixed(2) + " W";
 }
 
 function calcEnergy() {
-    let p = parseFloat(Pe.value);
-    let time = parseFloat(t.value);
-    energyOut.innerText = "E = " + (p * time).toFixed(2) + " J";
+    energyOut.innerText = "E = " + (Pe.value * t.value).toFixed(2) + " J";
 }
 
-function calcFreq() {
-    let T = parseFloat(document.getElementById("T").value);
-    freqOut.innerText = "f = " + (1 / T).toFixed(2) + " Hz";
-}
+function calcAC() {
+    let V = parseFloat(Vrms.value);
+    let I = parseFloat(Irms.value);
+    let pf = parseFloat(document.getElementById("pf").value);
 
-function calcCap() {
-    let Q = parseFloat(document.getElementById("Q").value);
-    let V = parseFloat(document.getElementById("Vc").value);
-    capOut.innerText = "C = " + (Q / V).toFixed(6) + " F";
-}
-
-function calcInd() {
-    let fluxVal = parseFloat(document.getElementById("flux").value);
-    let I = parseFloat(document.getElementById("Il").value);
-    indOut.innerText = "L = " + (fluxVal / I).toFixed(6) + " H";
+    let P = V * I * pf;
+    acOut.innerText = "Real Power = " + P.toFixed(2) + " W";
 }
 
 const colors = ["Black","Brown","Red","Orange","Yellow","Green","Blue","Violet","Gray","White"];
