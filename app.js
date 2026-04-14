@@ -77,14 +77,32 @@ function calcImpedance() {
     impOut.innerText = `Impedance Z = ${Z.toFixed(2)} Ω`;
 }
 
-/* RESISTOR */
-const colors = ["Black","Brown","Red","Orange","Yellow","Green","Blue","Violet","Gray","White"];
+const colors = [
+    "Black","Brown","Red","Orange","Yellow",
+    "Green","Blue","Violet","Gray","White"
+];
 
 colors.forEach((c,i)=>{
     b1.innerHTML += `<option value="${i}">${c}</option>`;
     b2.innerHTML += `<option value="${i}">${c}</option>`;
+    b3.innerHTML += `<option value="${i}">${c}</option>`;
     mult.innerHTML += `<option value="${10**i}">${c}</option>`;
-});function formatRes(value) {
+});
+
+tol.innerHTML = `
+<option value="0">None</option>
+<option value="5">Gold (±5%)</option>
+<option value="10">Silver (±10%)</option>
+`;
+
+function updateBands() {
+    let type = bandType.value;
+
+    b3.style.display = (type >= 5) ? "block" : "none";
+    tol.style.display = (type >= 4) ? "block" : "none";
+}
+
+function formatRes(value) {
     if (value >= 1e9) return (value/1e9).toFixed(2) + " GΩ";
     if (value >= 1e6) return (value/1e6).toFixed(2) + " MΩ";
     if (value >= 1e3) return (value/1e3).toFixed(2) + " kΩ";
@@ -92,19 +110,23 @@ colors.forEach((c,i)=>{
 }
 
 function calcRes() {
-    let value = ((+b1.value * 10) + (+b2.value)) * (+mult.value);
-    resOut.innerText = "Resistance = " + formatRes(value);
-}
+    let type = bandType.value;
 
+    let value;
 
-
-function updateBands() {
-    let type = document.getElementById("bandType").value;
-
-    // basic control (later upgrade possible)
-    if (type == 3) {
-        mult.style.display = "block";
+    if (type == 3 || type == 4) {
+        value = ((+b1.value * 10) + (+b2.value)) * (+mult.value);
     } else {
-        mult.style.display = "block";
+        value = ((+b1.value * 100) + (+b2.value * 10) + (+b3.value)) * (+mult.value);
     }
+
+    let tolVal = tol.value;
+
+    let output = "Resistance = " + formatRes(value);
+
+    if (tolVal != 0) {
+        output += ` ±${tolVal}%`;
+    }
+
+    resOut.innerText = output;
 }
