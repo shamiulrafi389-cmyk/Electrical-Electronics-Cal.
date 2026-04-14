@@ -84,12 +84,20 @@ colors.forEach((c,i)=>{
     b1.innerHTML += `<option value="${i}">${c}</option>`;
     b2.innerHTML += `<option value="${i}">${c}</option>`;
     mult.innerHTML += `<option value="${10**i}">${c}</option>`;
-});
+});function formatRes(value) {
+    if (value >= 1e9) return (value/1e9).toFixed(2) + " GΩ";
+    if (value >= 1e6) return (value/1e6).toFixed(2) + " MΩ";
+    if (value >= 1e3) return (value/1e3).toFixed(2) + " kΩ";
+    return value + " Ω";
+}
 
 function calcRes() {
     let value = ((+b1.value * 10) + (+b2.value)) * (+mult.value);
-    resOut.innerText = `Resistance = ${value} Ω`;
+    resOut.innerText = "Resistance = " + formatRes(value);
 }
+
+
+
 function updateBands() {
     let type = document.getElementById("bandType").value;
 
