@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Electrical Calculator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Electrical & Electronics Calculator</h1>
+</header>
+
+<div class="container">
+
+<nav>
+    <button onclick="show('ohm')">Ohm's Law</button>
+    <button onclick="show('power')">Power</button>
+    <button onclick="show('energy')">Energy</button>
+    <button onclick="show('resistor')">Resistor</button>
+    <button onclick="show('cap')">Capacitance</button>
+    <button onclick="show('ind')">Inductance</button>
+    <button onclick="show('freq')">Frequency</button>
+</nav>
+
+<main>
+
+<section id="ohm" class="card">
+    <h2>Ohm's Law</h2>
+    <input id="V" placeholder="Voltage (V)">
+    <input id="I" placeholder="Current (A)">
+    <input id="R" placeholder="Resistance (Ω)">
+    <button onclick="calcOhm()">Calculate</button>
+    <p id="ohmOut"></p>
+</section>
+
+<section id="power" class="card hidden">
+    <h2>Power</h2>
+    <input id="Vp" placeholder="Voltage (V)">
+    <input id="Ip" placeholder="Current (A)">
+    <button onclick="calcPower()">Calculate</button>
+    <p id="powerOut"></p>
+</section>
+
+<section id="energy" class="card hidden">
+    <h2>Energy</h2>
+    <input id="Pe" placeholder="Power (W)">
+    <input id="t" placeholder="Time (s)">
+    <button onclick="calcEnergy()">Calculate</button>
+    <p id="energyOut"></p>
+</section>
+
+<section id="resistor" class="card hidden">
+    <h2>Resistor Color Code</h2>
+    <select id="b1"></select>
+    <select id="b2"></select>
+    <select id="mult"></select>
+    <button onclick="calcRes()">Calculate</button>
+    <p id="resOut"></p>
+</section>
+
+<section id="cap" class="card hidden">
+    <h2>Capacitance</h2>
+    <input id="Q" placeholder="Charge (C)">
+    <input id="Vc" placeholder="Voltage (V)">
+    <button onclick="calcCap()">Calculate</button>
+    <p id="capOut"></p>
+</section>
+
+<section id="ind" class="card hidden">
+    <h2>Inductance</h2>
+    <input id="flux" placeholder="Flux">
+    <input id="Il" placeholder="Current (A)">
+    <button onclick="calcInd()">Calculate</button>
+    <p id="indOut"></p>
+</section>
+
+<section id="freq" class="card hidden">
+    <h2>Frequency</h2>
+    <input id="T" placeholder="Time Period (s)">
+    <button onclick="calcFreq()">Calculate</button>
+    <p id="freqOut"></p>
+</section>
+
+</main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
